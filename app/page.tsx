@@ -10,7 +10,8 @@ export default async function Home() {
     <section className='flex flex-col items-center content-center px-2 '>
       <h1 className=' text-xl p-4'>Список постов</h1>
       <Suspense fallback={<h2>Идет загрузка постов ...</h2>}>
-        <PostList posts={posts} />
+        {/* <PostList posts={posts} /> */}
+        <PostList />
       </Suspense>
     </section>
   );

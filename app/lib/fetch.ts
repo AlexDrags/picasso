@@ -1,15 +1,23 @@
 'use server';
 
 export const dataFetch = async () => {
-  const res = await fetch(`${process.env.BASE_URL}`, {
-    method: 'GET',
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${process.env.BASE_URL}`, {
+      method: 'GET',
+    });
+    return res.json();
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const dataFetchById = async (id: number) => {
-  const res = await fetch(`${process.env.BASE_URL}/${id}`, {
-    method: 'GET',
-  });
-  return res.json();
+  try {
+    const res = await fetch(`${process.env.BASE_URL}/${id}`, {
+      method: 'GET',
+    });
+    return res.json();
+  } catch (error) {
+    console.error(error);
+  }
 };
