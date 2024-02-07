@@ -25,15 +25,17 @@ export default function TodoList() {
           todos.map((todo: any, index: any) => {
             return (
               <li className='flex justify-between' key={index}>
-                <label
-                  className={todo.check ? 'flex justify-between gap-2 line-through' : 'flex justify-between gap-2'}
-                >
+                <p className={todo.check ? 'flex justify-between gap-2 line-through' : 'flex justify-between gap-2'}>
                   <span>{`${index + 1}`}.</span> {`${todo.todo}`} <span>{`${todo.datetime}`.slice(11)}</span>
-                  <input onChange={() => handlerCheckTodo(index)} type='checkbox' name='check' id='check' />
-                </label>
-                <button onClick={() => handlerRemoveTodo(index)} type='button'>
-                  &#10799;
-                </button>
+                </p>
+                <div className='flex gap-3'>
+                  <button onClick={() => handlerCheckTodo(index)} type='button'>
+                    &#128504;
+                  </button>
+                  <button onClick={() => handlerRemoveTodo(index)} type='button'>
+                    &#10799;
+                  </button>
+                </div>
               </li>
             );
           })}

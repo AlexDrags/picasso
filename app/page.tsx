@@ -1,7 +1,5 @@
 import { Suspense } from 'react';
 import TodoList from './components/TodoList';
-import { dataFetch } from './lib/fetch';
-import { PostProps } from '@/app/model/modelProps';
 import AddTodo from '@/app/components/AddTodo';
 export default async function Home() {
   return (

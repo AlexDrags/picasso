@@ -18,9 +18,12 @@ const todoSlice = createSlice({
       const indexId = action.payload;
       return state.forEach((todo: any, index: any) => {
         if (index === indexId) {
-          return (todo.check = true);
+          if (todo.check === true) {
+            return (todo.check = false);
+          } else {
+            return (todo.check = true);
+          }
         }
-        return todo;
       });
     },
   },
