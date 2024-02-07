@@ -29,12 +29,8 @@ export default function TodoList() {
                   <span>{`${index + 1}`}.</span> {`${todo.todo}`} <span>{`${todo.datetime}`.slice(11)}</span>
                 </p>
                 <div className='flex gap-3'>
-                  <button onClick={() => handlerCheckTodo(index)} type='button'>
-                    🗸
-                  </button>
-                  <button onClick={() => handlerRemoveTodo(index)} type='button'>
-                    𐄂
-                  </button>
+                  <button className='bg-icon-1 w-4 h-4' onClick={() => handlerCheckTodo(index)} type='button'></button>
+                  <button className='bg-icon-2 w-4 h-4' onClick={() => handlerRemoveTodo(index)} type='button'></button>
                 </div>
               </li>
             );
