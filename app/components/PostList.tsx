@@ -1,4 +1,6 @@
 'use client';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo, removePost } from '@/redux/slices/todoSlice';
 import { PostProps } from '@/app/model/modelProps';
 import { dataFetch } from '../lib/fetch';
 import { InfiniteLoader, List, WindowScroller, AutoSizer } from 'react-virtualized';
@@ -7,22 +9,34 @@ import NavButton from './NavButton';
 import { useEffect, useState } from 'react';
 //export default function PostList({ posts }: { posts: Array<PostProps> }) {
 export default function PostList() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const data = (async function () {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
-        method: 'GET',
-      });
-      return res;
-    })();
-    async function load() {
-      const p = (await data).json();
-      setPosts(await p);
-    }
-    load();
-  });
+  const dispatch = useDispatch();
+  const posts = useSelector((state: any) => state.posts);
+
+  const handleRemovePost = (postId: any) => {
+    dispatch(removePost(postId));
+    console.log(posts);
+  };
+
+  console.log(posts);
+
+  //const [posts, setPosts] = useState([]);
+  // useEffect(() => {
+  //   const data = (async function () {
+  //     const res = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
+  //       method: 'GET',
+  //     });
+  //     return res;
+  //   })();
+  //   async function load() {
+  //     const p = (await data).json();
+  //     setPosts(await p);
+  //   }
+  //   load();
+  // });
   return (
     <>
+      {/* <button onClick={() => handlerAddPost(ob)}>AddNew+</button> */}
+      {/* {JSON.stringify(posts)} */}
       <div style={{ display: 'flex', width: '95vw', height: '90vh', paddingLeft: '10px' }}>
         <AutoSizer>
           {({ width, height }) => (
@@ -44,6 +58,7 @@ export default function PostList() {
                       #{id} {title} {body}
                     </p>
                     <NavButton path={`/${index}`}>Просмотр</NavButton>
+                    <button onClick={() => handleRemovePost(id)}>Del-</button>
                   </li>
                 );
               }}

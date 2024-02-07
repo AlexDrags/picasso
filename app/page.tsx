@@ -1,18 +1,21 @@
 import { Suspense } from 'react';
-import PostList from './components/PostList';
+import TodoList from './components/TodoList';
 import { dataFetch } from './lib/fetch';
 import { PostProps } from '@/app/model/modelProps';
-
+import AddTodo from '@/app/components/AddTodo';
 export default async function Home() {
-  const posts: Array<PostProps> = await dataFetch();
-
   return (
-    <section className='flex flex-col items-center content-center px-2 '>
-      <h1 className=' text-xl p-4'>Список постов</h1>
-      <Suspense fallback={<h2>Идет загрузка постов ...</h2>}>
-        {/* <PostList posts={posts} /> */}
-        <PostList />
-      </Suspense>
+    <section className='flex flex-col items-center content-center px-2 min-w-72'>
+      <div className='flex flex-col gap-3 sm:flex-row'>
+        <AddTodo />
+        <TodoList />
+      </div>
     </section>
   );
+}
+
+{
+  /* <Suspense fallback={<h2>Идет загрузка постов ...</h2>}>
+  <PostList />
+</Suspense>; */
 }
