@@ -30,10 +30,10 @@ export default function TodoList() {
                 </p>
                 <div className='flex gap-3'>
                   <button onClick={() => handlerCheckTodo(index)} type='button'>
-                    &#128504;
+                    🗸
                   </button>
                   <button onClick={() => handlerRemoveTodo(index)} type='button'>
-                    &#10799;
+                    𐄂
                   </button>
                 </div>
               </li>
