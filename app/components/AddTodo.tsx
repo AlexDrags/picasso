@@ -10,6 +10,8 @@ export default function AddTodo() {
       datetime: formData.get('datetime'),
       check: false,
     };
+    let soundObj = new Audio('/addTodoSound.mp3');
+    soundObj.play();
     dispatch(addTodo(formObj));
   }
 
@@ -28,6 +30,10 @@ export default function AddTodo() {
           name='todo'
           id='todo'
           placeholder='Todo name'
+          onChange={() => {
+            let soundObj = new Audio('/btnSound.mp3');
+            soundObj.play();
+          }}
         />
         <input
           className='py-1 px-2 rounded-lg'

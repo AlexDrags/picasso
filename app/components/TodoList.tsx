@@ -10,8 +10,12 @@ export default function TodoList() {
 
   const handlerCheckTodo = (indexId: any) => {
     dispatch(lineThrough(indexId));
+    let soundObj = new Audio('/doneTodoSound.mp3');
+    soundObj.play();
   };
   const handlerRemoveTodo = (indexId: any) => {
+    let soundObj = new Audio('/deleteTodoSound.mp3');
+    soundObj.play();
     dispatch(removePost(indexId));
   };
   return (
